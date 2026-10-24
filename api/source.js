@@ -1,0 +1,2 @@
+import {retrieve} from '../lib/retrieve.js';
+export default async function handler(req,res){res.setHeader('Cache-Control','no-store');if(req.method!=='POST')return res.status(405).json({error:'Use POST'});try{if(JSON.stringify(req.body).length>3000)throw Error('URL too long');const source=await retrieve(req.body?.url);return res.status(200).json({source})}catch(e){return res.status(400).json({error:e.message||'Retrieval failed. Paste source text instead.'})}}

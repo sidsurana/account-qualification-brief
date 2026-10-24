@@ -1,0 +1,1 @@
+import {mkdirSync,copyFileSync} from 'node:fs';mkdirSync('public/vendor',{recursive:true});for(const f of ['index.html','style.css','app.js','ai-session-client.mjs'])copyFileSync(f,'public/'+f);copyFileSync('vendor/jspdf.umd.min.js','public/vendor/jspdf.umd.min.js');

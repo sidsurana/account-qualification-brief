@@ -1,0 +1,3 @@
+import {test} from 'node:test';import assert from 'node:assert/strict';import {safeUrl,publicAddress} from '../lib/retrieve.js';
+test('reject unsafe protocols, auth and ports',()=>{for(const u of ['http://example.com','https://a:b@example.com','https://example.com:8443','file:///etc/passwd'])assert.throws(()=>safeUrl(u))});
+test('reject private, loopback, link local, mapped, reserved',()=>{for(const ip of ['127.0.0.1','10.0.0.1','169.254.169.254','192.168.1.1','172.16.0.1','0.0.0.0','::1','fc00::1','fe80::1','::ffff:127.0.0.1','100.64.0.1','224.0.0.1'])assert.equal(publicAddress(ip),false,ip);assert.equal(publicAddress('8.8.8.8'),true)});

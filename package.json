@@ -1,0 +1,17 @@
+{
+  "name": "account-qualification-brief",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node --check app.js && node --check api/source.js && node --check api/ai.js && node build.js",
+    "lint": "node --check app.js && node --check lib/retrieve.js && node --check api/source.js && node --check api/ai.js",
+    "test": "node --test test/*.test.js"
+  },
+  "dependencies": {
+    "cheerio": "1.0.0",
+    "ipaddr.js": "2.2.0",
+    "jspdf": "2.5.2"
+  },
+  "description": "Assess website evidence and call notes for account qualification with source-linked review output.",
+  "license": "MIT"
+}
